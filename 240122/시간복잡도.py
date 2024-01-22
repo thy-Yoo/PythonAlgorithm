@@ -40,3 +40,6 @@ numbers.sort() : 팀 소트 알고리즘, 최악의 경우 O(nlogn)
 for nuber in numbers:
     print(number) : n번 출력하므로 O(n)
 """
+
+
+""" 커밋 테스트.. 240122 LitlOuo 계정으로 바꿔서 커밋하기."""
