@@ -1,4 +1,17 @@
 ***
+#### 깃 계정 상태 확인하기
+##### 명령어
+git config --global user.name [사용자 이름]
+git config --global user.email [사용자 이메일]
+
+
+```bash
+git config --global user.name
+git config --global user.email
+```
+
+
+***
 #### 커밋 리스트 보기 
 ###### 명령어
 ```bash
