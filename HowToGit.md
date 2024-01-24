@@ -1,14 +1,20 @@
 ***
 #### 깃 계정 상태 확인하기
 ##### 명령어
-git config --global user.name [사용자 이름]
-git config --global user.email [사용자 이메일]
-
-
 ```bash
 git config --global user.name
 git config --global user.email
 ```
+
+#### 깃 계정 바꾸기
+git config --global user.name [사용자 이름]
+git config --global user.email [사용자 이메일]
+```bash
+git config --global user.name LitlOuo
+git config --global user.email ninkyoii@gmail.com
+```
+
+
 
 
 ***
