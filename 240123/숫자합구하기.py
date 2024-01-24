@@ -18,3 +18,13 @@ for i in nlist: #nlist의 각 요소마다  for문을 수행
     sum = sum + int(i)
 
 print(sum)
+
+# 만약 공백으로 자릿수를 구분해서 입력받는 다면?
+
+n2 = int(input("몇개의 숫자를 입력할 지 결정하세요.: "))
+nlist2 = input(f"{n}개의 숫자를 공백을 이용해 구분해서 입력하세요.: ").split()
+
+for i in nlist2:
+    print(f"i: {i}")
+    sum = sum + int(i)
+print(sum)
