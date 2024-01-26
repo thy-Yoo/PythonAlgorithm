@@ -5,7 +5,6 @@
 # 결과 그래프를 셀 출력에 직접 표시한다.
 # 즉 pycharm 에서는 쓸 필요가 없는 듯 하다!
 
-
 import matplotlib.pyplot as plt
 # HOW TO. 기본 그래프 바탕 그리는 방법
 # 축 범위 설정
@@ -17,6 +16,11 @@ import matplotlib.pyplot as plt
 # plt.xticks(range(-6,7,2))
 # 그래프 표시
 #plt.show()
+
+# HOW TO. matplotlib 에서 사용 가능한 색상들 출력
+# import matplotlib
+# for name, hex in matplotlib.colors.cnames.items():
+#     print(name, hex)
 
 # HOW TO. 한글 폰트 설정
 import matplotlib.font_manager as fm
@@ -38,9 +42,29 @@ ax1.set_yticks(range(-6,7,2))
 # 모눈 표시
 ax1.grid(True, linestyle='--') # '-', '--','-.',':',' ', '', 'solid', 'dashed', 'dashdot', 'dotted'
 # 그래프 제목/추가 텍스트 설정
-ax1.set_title('(A)')
-ax1.text(0.5,-0.2, '텍스트요', ha='center', va='center', transform=ax1.transAxes)
-plt.subplots_adjust(bottom=0.2)
+ax1.set_title('벡터 v,w,v+w')
+ax1.text(0.5,-0.2, '(A)', ha='center', va='center', transform=ax1.transAxes)
+plt.subplots_adjust(bottom=0.1)
+# 데이터 그리기
+# 벡터 설정, 벡터는 [x,y] 리스트로도, (x,y) 튜플로도 가능하다!
+# HOW TO. 튜플
+"""
+v = (1,2)
+w = (4,-6)
+# arrow(시작x, 시작y, 벡터x(끝점이아님), 벡터y, 설정 ...)
+ax1.arrow(0,0, v[0], v[1], head_width=0.3, width=0.1, color='black', length_includes_head=True)
+ax1.arrow(v[0],v[1], w[0], w[1], head_width=0.3, width=0.1, color='orange', length_includes_head=True)
+# 합 벡터 계산
+r = (v[0]+w[0], + v[1]+w[1]) # 튜플은 각 성분 별로 더해야 한다.
+ax1.arrow(0,0, r[0], r[1], head_width=0.3, width=0.1, color='salmon', length_includes_head=True)
+"""
+# HOW TO. 리스트
+v = [1,2]
+w = [4,-6]
+ax1.arrow(0,0,v[0],v[1], head_width=0.3, width=0.1, color='black', length_includes_head=True)
+ax1.arrow(v[0],v[1],w[0],w[1], head_width=0.3, width=0.1, color='orange', length_includes_head=True)
+r = v + w
+ax1.arrow(0,0,r[0],r[1], head_width=0.3, width=0.1, color='salmon', length_includes_head=True)
 
 
 ax2.set_xlim(-6,6)
