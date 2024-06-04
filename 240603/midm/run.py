@@ -25,7 +25,7 @@ def main():
         midm = MyMidm(
             model_name=model_name,
             local_model_path=local_model_path,
-            device="cpu"
+            device='cuda' if torch.cuda.is_available() else 'cpu'
         )
         midm.load_model()
 

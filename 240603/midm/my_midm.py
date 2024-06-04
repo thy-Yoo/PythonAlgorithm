@@ -15,7 +15,7 @@ class MyMidm:
     def __init__(self, model_name, local_model_path, device):
         self.model_name = model_name
         self.local_model_path = local_model_path
-        self.device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = device
         self.tokenizer = None
         self.model = None
         logging.info(f"self.device is : {self.device}")
@@ -54,8 +54,8 @@ class MyMidm:
         logging.info(f"{self.local_model_path} 경로의 모델을 로드 합니다.")
 
         # 모델 로드를 시도할 최대 메모리 사용량 임계치 (퍼센트)
-        rss_threshold = 60
-        vms_threshold = 200
+        rss_threshold = 70
+        vms_threshold = 230
 
         # 메모리 사용량이 충분히 낮아질 때까지 대기
         # while not ResourceMonitoring.monitor_memory_usage(rss_threshold, vms_threshold):
@@ -85,11 +85,15 @@ class MyMidm:
                 trust_remote_code=True
             )
             with init_empty_weights():
-                self.model = AutoModelForCausalLM.from_config(config)
+                self.model = AutoModelForCausalLM.from_config(
+                    config,
+                    trust_remote_code=True,
+                )
             load_checkpoint_in_model(
                 self.model,
                 checkpoint=f"{self.local_model_path}",
                 device_map="auto",
+                trust_remote_code=True,
                 low_cpu_mem_usage=True
             )
             logging.info(f" 모델 로드 완료.")
